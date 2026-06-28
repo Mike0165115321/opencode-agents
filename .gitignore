@@ -1,0 +1,13 @@
+# OS
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# Editor
+*.swp
+*.swo
+*~
+
+# Temp
+temp/
+tmp/
