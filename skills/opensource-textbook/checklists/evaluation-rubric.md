@@ -55,7 +55,7 @@
 
 ## Total Score
 
-```
+```text
 Accuracy:            ___/25
 Source Traceability: ___/20
 Teaching Clarity:    ___/15
@@ -75,7 +75,7 @@ Total:               ___/100
 ถ้าคะแนนต่ำกว่า 85 ให้ focus แก้ที่ scoring ต่ำสุดก่อน:
 
 | คะแนนต่ำสุด | แก้ที่ |
-|------------|--------|
+|---|---|
 | Accuracy | ดึงข้อมูลใหม่จาก GitHub |
 | Source | เพิ่ม `[✓]` labels (ดู Per-Pass minimum) |
 | Clarity | rewrite section ที่ซับซ้อน |
