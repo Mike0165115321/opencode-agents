@@ -128,6 +128,126 @@ Lean Core (~30-120 บรรทัด)
 
 ---
 
+## 🚧 Guardrails — ป้องกัน Agent ติด loop + พลาด
+
+### 1. Step Budget (จำกัดขั้นตอน)
+
+ทุก agent ต้องมีขีดจำกัดก่อน escalate:
+
+```markdown
+## Step Budget
+- Max steps ก่อนหยุด: <N> (เริ่มที่ 5-10)
+- Max tool calls ต่อ task: <N>
+- เมื่อถึงขีดจำกัด → สรุป output ที่มีอยู่ + บอก user ว่าติด limit
+```
+
+### 2. Stop Conditions (เมื่อไหร่ควรหยุด)
+
+ทุก agent ต้องมีใน core ว่า:
+- **"หยุดและส่ง output ทันทีเมื่อ:"** — list of conditions (e.g., กรณี debugger: เจอ root cause, กรณี designer: deliver HTML)
+- **"ไม่ต้องทำต่อถ้า:"** — กรณีที่ไม่ควร waste tokens (e.g., ข้อมูลไม่พอ, task ambiguous)
+
+### 3. Error Protocol (เมื่อ tool ล้ม)
+
+กฎตายตัว ทุก agent:
+```
+1. Tool return error → REPORT ทันที (ห้ามแก้เงียบ)
+2. รายงาน: error อะไร, tool ไหน, ลอง retry แล้วหรือยัง
+3. 3 ทางเลือกให้ user:
+   a) ลองใหม่ (retry)
+   b) ข้าม tool นี้ไป
+   c) ยกเลิก task
+```
+
+### 4. Forbidden Actions (ห้ามทำ)
+
+เพิ่มใน agent core — ตัวอย่าง:
+```markdown
+## Forbidden
+- ห้ามแก้ไข config/ไฟล์ระบบโดยไม่ถาม
+- ห้ามใช้ destructive command (rm -rf, docker rm -f) โดยไม่ confirm
+- ห้ามเขียนทับไฟล์โดยไม่ backup
+- ห้าม deploy/push โดยไม่ review
+```
+
+---
+
+## ✅ Self-Review Protocol — ตรวจงานตัวเองก่อนส่ง
+
+ทุก agent ต้องมี self-review ก่อน deliver output:
+
+```markdown
+## Self-Review (ทำก่อนส่งทุกครั้ง)
+1. ตรง requirements ไหม? → ถ้าไม่ → แก้
+2. มีข้อมูลที่ขาด / ambiguous / hallucinate ไหม? → ถ้ามี → บอก user
+3. output นี้ safe ไหม? (ไม่ลบ/แก้ของสำคัญ) → ถ้าไม่ → ขอ confirm
+4. output กระชับพอไหม? ไม่มีส่วนที่ไม่จำเป็น? → ถ้าไม่ → trim
+```
+
+---
+
+## 📏 Eval Rubric — วัดว่า Agent ทำงานดีแค่ไหน
+
+Rubric สำหรับประเมิน output agent:
+
+| เกณฑ์ | 1-2 (ไม่ผ่าน) | 3 (พอใช้) | 4-5 (ดี) |
+|-------|-------------|-----------|---------|
+| **ตรง requirement** | พลาดประเด็นหลัก | ตรงบางส่วน | ตรงครบทุกข้อ |
+| **ไม่ hallucinate** | มีข้อมูลเท็จ | มีข้อมูลไม่ตรงเล็กน้อย | อ้างอิง verified |
+| **error handling** | ปิด error เงียบ | รายงานแต่ไม่แก้ | รายงาน + เสนอทางเลือก |
+| **efficiency** | ทำเกิน scope เยอะ | มีบ้างเล็กน้อย | ทำเท่าที่จำเป็น |
+| **security aware** | สั่ง destructive โดยไม่ถาม | ถามบ้าง | ถามทุกครั้ง |
+
+ใช้หลังจบ session เพื่อให้ feedback ตัว agent ได้
+
+---
+
+## 🧠 Industry Lessons — Anti-patterns ที่เจอในสนาม
+
+| Anti-pattern | อาการ | ทางแก้ใน standard เรา |
+|-------------|------|---------------------|
+| **Blurring agent/tool** | เอาธุรกิจ logic ไว้ใน prompt → พังตอนเปลี่ยน | Tool boundaries: tool = logic, agent = judgment |
+| **No Context Budget** | prompt ยาวล้น context | Step budget + stop conditions |
+| **Swallowing Errors** | tool fail → agent พล่ามต่อ | Error protocol |
+| **Prompt and Pray** | ไม่มี verification | Self-review protocol |
+| **No Eval** | แก้สุ่มๆ ไม่รู้ effect | Eval rubric |
+| **Infinite Loop** | เรียก tool ซ้ำๆ ไม่รู้จบ | Step budget + circuit breaker |
+
+---
+
+## 📋 รายการตรวจสอบ (Checklist) ก่อน commit Agent
+
+เมื่อสร้าง/แก้ agent:
+
+- [ ] Core ถูกว่า 30-120 บรรทัด?
+- [ ] มี Identity + Principles?
+- [ ] มี Step Budget?
+- [ ] มี Stop Conditions?
+- [ ] มี Error Protocol?
+- [ ] มี Self-Review?
+- [ ] มี Forbidden Actions?
+- [ ] Skill files 40-80 br. ต่อ skill?
+- [ ] Eval rubric สำหรับวัด output?
+- [ ] push ขึ้น GitHub?
+
+---
+
+## ⏳ รอ Decision: Execution Patterns
+
+> **ยังไม่ตัดสินใจ** — รอ Mike เลือกว่าอยากใช้ pattern แบบไหน
+
+Pattern ที่นิยมในวงการ:
+
+| Pattern | ใช้เมื่อ | agent ที่เหมาะ |
+|---------|---------|---------------|
+| **ReAct** (Reason + Act) | แก้ปัญหา, debug, ต้องลองผิดลองถูก | debugger |
+| **Plan-and-Execute** | ทำงานหลายขั้นตอนตามแผน | backend |
+| **Reflection** | ต้องการ output คุณภาพ, ตรวจซ้ำ | designer, scribe |
+| **Chain of Thought** | วิเคราะห์เชิงลึก, ทำความเข้าใจ | steward |
+| **Tool-Use** | ใช้ tools เยอะ ต้อง orchestrate | steward |
+
+---
+
 ## บทเรียนจาก Designer Agent
 
 | รอบ | ขนาด | ปัญหา |
@@ -143,4 +263,4 @@ Lean Core (~30-120 บรรทัด)
 
 ---
 
-*Standard version 1.0 — 29 Jun 2026*
+*Standard version 2.0 — 29 Jun 2026*
