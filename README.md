@@ -14,11 +14,15 @@
 | **scribe** 📝 | Documentation, Thai Open Source textbooks, Obsidian notes | `agents/scribe.md` |
 | **minecrafter** ⛏️ | AI Minecraft player — Brain-Body architecture | `agents/minecrafter.md` |
 
-### Architecture Pattern
+### Architecture Pattern — Hybrid Lean Core + On-Demand Skills
+
+> มาตรฐานการออกแบบ Agent ดูที่ [`docs/agent-design-standard.md`](docs/agent-design-standard.md)
 
 Each agent follows a **lean core + on-demand skills** pattern:
-- **Agent file**: identity, language rules, core skills, tools, environment references (~30-120 lines)
-- **Skills** (on-demand): loaded via `skill` tool when the task requires deep knowledge
+- **Agent file (core)**: identity, principles, core skills list, tools, environment (~30-120 lines)
+- **Skills** (on-demand): deep domain knowledge loaded only when needed (~40-80 lines each)
+
+Benefits: **55-85% token savings** vs monolithic agent files, easier to maintain, trivial to extend.
 
 ## 📦 Custom Skills
 
@@ -62,9 +66,10 @@ Skills go in: `%USERPROFILE%\.agents\skills\<name>\SKILL.md`
 
 ```
 ai-agent-team/
-├── agents/        # Agent definitions (opencode format)
-├── skills/        # Custom skills (SKILL.md per directory)
-├── docs/          # Architecture notes
+├── agents/        # Agent definitions — lean core (opencode format)
+├── skills/        # Custom skills — on-demand (SKILL.md per directory)
+├── docs/          # Architecture & design standards
+│   └── agent-design-standard.md   ← มาตรฐานการออกแบบ Agent
 ├── README.md
 └── .gitignore
 ```
