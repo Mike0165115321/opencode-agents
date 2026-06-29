@@ -9,7 +9,7 @@
 |-------|------|------|
 | **steward** 🏆 | Default — pragmatic, automation-first, system-minded | `agents/steward.md` |
 | **designer** 🎨 | UX/UI, product design, visual system, CSS motion | `agents/designer.md` |
-| **backend** ⚙️ | API, database, architecture, backend systems | `agents/backend.md` |
+| **backend** ⚙️ | API, database, architecture, backend systems (v2.0) | `agents/backend.md` |
 | **debugger** 🐛 | System detective, bug hunter, architecture analyst | `agents/debugger.md` |
 | **scribe** 📝 | Documentation, Thai Open Source textbooks, Obsidian notes | `agents/scribe.md` |
 | **minecrafter** ⛏️ | AI Minecraft player — Brain-Body architecture | `agents/minecrafter.md` |
@@ -24,7 +24,7 @@ Each agent follows a **lean core + on-demand skills** pattern:
 
 Benefits: **55-85% token savings** vs monolithic agent files, easier to maintain, trivial to extend.
 
-## 📦 Custom Skills
+## 📦 Custom Skills (11 skills)
 
 Skills created/designed by me (not third-party). Located in `skills/`:
 
@@ -37,6 +37,14 @@ Skills created/designed by me (not third-party). Located in `skills/`:
 | `design-screen-spec` | 17-point screen specification standard |
 | `design-quality` | Design quality rubric (0-100), review checklist, anti-patterns |
 | `design-output` | 5 output formats — screen, polish, HTML, motion, image |
+
+### Backend
+
+| Skill | Description |
+|-------|-------------|
+| `backend-architecture` | System design — SoC, 3-Layer, Plugin System, Design Patterns |
+| `backend-api-design` | API standards — RESTful, versioning, error handling, validation |
+| `backend-database` | Database — schema design, indexing, query optimization, migration |
 
 ### Reference
 
@@ -76,4 +84,4 @@ ai-agent-team/
 
 ---
 
-*Last updated: 29 Jun 2026*
+*Last updated: 29 Jun 2026 (backend v2.0 + 3 new skills)*
