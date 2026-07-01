@@ -8,7 +8,7 @@
 | Agent | Role | File |
 |-------|------|------|
 | **steward** 🏆 | Default — pragmatic, automation-first, system-minded | `agents/steward.md` |
-| **designer** 🎨 | UX/UI, product design, visual system, CSS motion | `agents/designer.md` |
+| **frontend** 🎨 | UX/UI, product design, visual system, CSS motion | `agents/frontend.md` |
 | **backend** ⚙️ | API, database, architecture, backend systems (v2.0) | `agents/backend.md` |
 | **debugger** 🐛 | System detective, bug hunter, architecture analyst | `agents/debugger.md` |
 | **scribe** 📝 | Documentation, Thai Open Source textbooks, Obsidian notes | `agents/scribe.md` |
@@ -61,7 +61,7 @@ Skills created/designed by me (not third-party). Located in `skills/`:
 | Agent | Role | File |
 |-------|------|------|
 | **backend** ⚙️ | Backend systems architecture (Chinese) | `zcode-agents/backend.md` |
-| **designer** 🎨 | UI/UX, visual system, mobile design (English) | `zcode-agents/designer.md` |
+| **frontend** 🎨 | UI/UX, visual system, mobile design (English) | `zcode-agents/frontend.md` |
 
 ZCode agents มีขนาดเล็กกว่า OpenCode version (~50 บรรทัด) เพราะ ZCode import skills แบบ manual (`$skill-name`) และมี Guardrails/Self-Review อยู่ใน environment ของ ZCode เอง
 

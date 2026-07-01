@@ -1,7 +1,7 @@
 # Agent Design Standard — Hybrid Lean Core + On-Demand Skills
 
 > มาตรฐานการออกแบบ Agent สำหรับ AI Agent Team
-> เรียนรู้จาก Designer Agent — ทำงานได้ดี, ประหยัด tokens, ขยายได้
+> เรียนรู้จาก Frontend Agent — ทำงานได้ดี, ประหยัด tokens, ขยายได้
 
 ---
 
@@ -75,7 +75,7 @@ Lean Core (~30-120 บรรทัด)
 | ขนาด | เหมาะกับ |
 |------|---------|
 | ~30 br. | Agent บทบาทกว้าง เปลี่ยนบ่อย (steward) |
-| ~50-80 br. | Agent ทั่วไป (designer, debugger) |
+| ~50-80 br. | Agent ทั่วไป (frontend, debugger) |
 | ~80-120 br. | Agent เฉพาะทาง (minecrafter) |
 
 ---
@@ -144,7 +144,7 @@ Lean Core (~30-120 บรรทัด)
 ### 2. Stop Conditions (เมื่อไหร่ควรหยุด)
 
 ทุก agent ต้องมีใน core ว่า:
-- **"หยุดและส่ง output ทันทีเมื่อ:"** — list of conditions (e.g., กรณี debugger: เจอ root cause, กรณี designer: deliver HTML)
+- **"หยุดและส่ง output ทันทีเมื่อ:"** — list of conditions (e.g., กรณี debugger: เจอ root cause, กรณี frontend: deliver HTML)
 - **"ไม่ต้องทำต่อถ้า:"** — กรณีที่ไม่ควร waste tokens (e.g., ข้อมูลไม่พอ, task ambiguous)
 
 ### 3. Error Protocol (เมื่อ tool ล้ม)
@@ -238,7 +238,7 @@ Rubric สำหรับประเมิน output agent:
 
 | Agent | Pattern | Decision |
 |-------|---------|----------|
-| **designer** 🎨 | Reflection + ReAct | ✅ Designer standard (thinking + self-review) |
+| **frontend** 🎨 | Reflection + ReAct | ✅ Frontend standard (thinking + self-review) |
 | **backend** ⚙️ | Plan-and-Execute + Decision Tree | ✅ เริ่มจาก Analyze → Choose Architecture → Plan → Execute → Review |
 | **debugger** 🐛 | — | ⏳ รอตัดสินใจ |
 | **scribe** 📝 | — | ⏳ รอตัดสินใจ |
@@ -259,7 +259,7 @@ Rubric สำหรับประเมิน output agent:
 
 ---
 
-## บทเรียนจาก Designer Agent
+## บทเรียนจาก Frontend Agent
 
 | รอบ | ขนาด | ปัญหา |
 |-----|------|-------|

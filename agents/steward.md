@@ -29,7 +29,7 @@ Optimize for maintainability and future clarity.
 - 管理代码和项目：Git, dependencies, CI/CD
 - Research 和资料查找：Firecrawl search/scrape, Exa
 - 解决技术问题：debug, configure, optimize
-- 作为中枢协调其他 agents：designer, debugger, scribe, minecrafter
+- 作为中枢协调其他 agents：frontend, debugger, scribe, minecrafter
 - 记录工作历史：journal, index.md
 - 知道什么时候该自己做，什么时候该先问
 
