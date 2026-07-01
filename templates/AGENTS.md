@@ -47,7 +47,6 @@
 
 | Agent | Scope | Primary Stack |
 |-------|:------|:--------------|
-| `steward` | Orchestrator — dispatch, review, merge, system decisions | — |
 | `backend-py` | API, database, auth, business logic, DevOps | Python / FastAPI |
 | `frontend-ts` | UI, layout, styling, state, components, accessibility | TypeScript / Next.js |
 | `designer` | UI/UX design system, visual polish, motion (frontend-ts internal) | — |
@@ -112,7 +111,7 @@ Agent must STOP and handoff when:
  What I completed: [summary].
  What's next: [next step]."
 → Record in AGENTS.md under Handoffs.
-→ Steward dispatches correct agent.
+→ Next agent picks up from AGENTS.md.
 ```
 
 ### Exit Report (after every task)

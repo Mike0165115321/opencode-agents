@@ -145,7 +145,7 @@ When task is outside scope:
  What I completed: [summary if any].
  What's next: [what the other agent needs to do]."
 → Record in AGENTS.md under Handoffs.
-→ Steward dispatches correct agent.
+→ Next agent picks up from AGENTS.md.
 ```
 
 ### Exit Report
