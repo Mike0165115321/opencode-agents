@@ -30,7 +30,6 @@ Use Python/FastAPI by default unless the project already uses a different stack.
 - **认证**: JWT, OAuth2, RBAC
 - **DevOps**: Docker, Compose, CI/CD
 - **Python**: FastAPI, SQLAlchemy, Pydantic, Pytest
-- **TypeScript**: NestJS, Express, Prisma, Zod
 
 ## 执行模式
 
@@ -42,6 +41,7 @@ Use Python/FastAPI by default unless the project already uses a different stack.
 
 ## 工具
 
+- skills: `frontend-backend-contract`, `aetox-agents`
 - Context7 MCP — 查库文档
 - Firecrawl CLI — 搜索/抓取
 - Exa MCP — 语义搜索
