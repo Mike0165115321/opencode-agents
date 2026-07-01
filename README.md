@@ -54,17 +54,32 @@ Skills created/designed by me (not third-party). Located in `skills/`:
 | `opensource-textbook` | Generate Thai-language textbooks from open source repos (v7.2) |
 | `aetox-astro` | Aetox AI architecture, automation, and enterprise web systems |
 
+## 🤖 ZCode Agents
+
+แยกจาก OpenCode agents — สำหรับใช้ใน **ZCode ADE** (`~/.zcode/agents/`):
+
+| Agent | Role | File |
+|-------|------|------|
+| **backend** ⚙️ | Backend systems architecture (Chinese) | `zcode-agents/backend.md` |
+| **designer** 🎨 | UI/UX, visual system, mobile design (English) | `zcode-agents/designer.md` |
+
+ZCode agents มีขนาดเล็กกว่า OpenCode version (~50 บรรทัด) เพราะ ZCode import skills แบบ manual (`$skill-name`) และมี Guardrails/Self-Review อยู่ใน environment ของ ZCode เอง
+
 ## 🔧 Local Setup
 
-These agents run in **OpenCode** (`C:\Users\Gigabyte\.config\opencode\`).
-
+### OpenCode Agents
 Agent files go in: `%USERPROFILE%\.config\opencode\agents\`
 Skills go in: `%USERPROFILE%\.agents\skills\<name>\SKILL.md`
+
+### ZCode Agents
+Agent files go in: `~/.zcode/agents/`
+Skills import: Settings → Skills → Import จาก `.agents/skills/`
 
 ### Environment Dependencies
 
 - **Windows 11** + PowerShell 7 + WSL2 Ubuntu
-- **OpenCode** with MCP servers: Gmail, Obsidian, Sequential Thinking, Mineflayer Bot, Speak TTS, Windows MCP, Image Resolver, Pixabay, Firecrawl, Exa, Context7
+- **OpenCode** with MCP servers: Gmail, Obsidian, Sequential Thinking, Speak TTS, Windows MCP, Image Resolver, Pixabay, Exa, Context7
+- **ZCode** (v3.2.1+, port 12345): ADE by Zhipu AI, uses DeepSeek V4 Pro/Flash as custom provider
 - **Image MCPs**: Image Resolver (Pexels 200 req/hr), Pixabay (5000 req/hr)
 - **Export**: `E:\Web-html\` for HTML prototypes
 - **Obsidian vault**: `E:\MikeData`
@@ -74,9 +89,10 @@ Skills go in: `%USERPROFILE%\.agents\skills\<name>\SKILL.md`
 
 ```
 ai-agent-team/
-├── agents/        # Agent definitions — lean core (opencode format)
-├── skills/        # Custom skills — on-demand (SKILL.md per directory)
-├── docs/          # Architecture & design standards
+├── agents/          # Agent definitions — lean core (opencode format)
+├── zcode-agents/    # Agent definitions — ZCode ADE format (leaner)
+├── skills/          # Custom skills — on-demand (SKILL.md per directory)
+├── docs/            # Architecture & design standards
 │   └── agent-design-standard.md   ← มาตรฐานการออกแบบ Agent
 ├── README.md
 └── .gitignore
@@ -84,4 +100,4 @@ ai-agent-team/
 
 ---
 
-*Last updated: 29 Jun 2026 (backend v2.0 + 3 new skills)*
+*Last updated: 1 Jul 2026 (+ ZCode agents, mobile skills)*
