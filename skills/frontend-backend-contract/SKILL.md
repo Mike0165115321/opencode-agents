@@ -274,3 +274,25 @@ src/
 - [ ] Error messages user-friendly.
 - [ ] No duplicated DTOs.
 - [ ] No invented fields.
+
+---
+
+## 14. Future: Automated Contract Verification
+
+Markdown contracts (Section 2) are enough for agents to coordinate today.
+When the team is ready to automate verification, add these to CI:
+
+| Tool | What it does | One-liner |
+|------|-------------|-----------|
+| **OpenAPI spec** | Machine-readable contract — generate types, mocks, tests | FastAPI/NestJS can auto-generate |
+| **Schemathesis** | Fuzz-test API against spec — catches 500s, schema drift, validation bugs | `schemathesis run openapi.json --checks all` |
+| **oasdiff** | Detect breaking changes between spec versions — fail PR if breaking | `oasdiff changelog old.yaml new.yaml --fail-on ERR` |
+| **Prism** | Mock server from spec — frontend devs unblocked before backend exists | `prism mock openapi.json` |
+
+Pipeline (when ready):
+```
+PR opened → schemathesis fuzz → oasdiff breaking check → fail on violation
+```
+
+Until then: focus on markdown contracts + stop conditions (Sections 2, 11, 13).
+These prevent more bugs than any tool.
