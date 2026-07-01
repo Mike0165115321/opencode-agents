@@ -1,22 +1,39 @@
-# 🤖 AI Agent Team — OpenCode Agent Definitions & Custom Skills
+# 🏴 Aetox Agents — AI Agent Gang
 
-> Personal agent team for OpenCode AI editor.
-> Created by **Mike** (Chayapol Promsavana) for daily dev workflow.
+> **Rule:** ห้ามเดา ห้ามซ้อน ห้ามหาย — Report, Scope-Check, Handoff.
+> Each agent has a clear scope. They don't overlap — they handoff.
 
 ## 🧠 Agents
 
-| Agent | Role | File |
-|-------|------|------|
-| **steward** 🏆 | Default — pragmatic, automation-first, system-minded | `agents/steward.md` |
-| **frontend** 🎨 | UX/UI, product design, visual system, CSS motion | `agents/frontend.md` |
-| **backend** ⚙️ | API, database, architecture, backend systems (v2.0) | `agents/backend.md` |
-| **debugger** 🐛 | System detective, bug hunter, architecture analyst | `agents/debugger.md` |
-| **scribe** 📝 | Documentation, Thai Open Source textbooks, Obsidian notes | `agents/scribe.md` |
-| **minecrafter** ⛏️ | AI Minecraft player — Brain-Body architecture | `agents/minecrafter.md` |
+| Agent | Role | Primary Stack | File |
+|-------|------|:--|------|
+| **steward** 🏆 | Orchestrator — dispatch, review, merge, system decisions | — | `agents/steward.md` |
+| **backend-py** ⚙️ | API, database, auth, business logic, DevOps | Python / FastAPI | `agents/backend-py.md` |
+| **frontend-ts** 🎨 | UI, layout, styling, state, components, accessibility | TypeScript / Next.js | `agents/frontend-ts.md` |
+| **debugger** 🐛 | Bug hunting, system analysis, root cause | Any | `agents/debugger.md` |
+| **scribe** 📝 | Documentation, OpenSource textbooks, Obsidian notes | Markdown | `agents/scribe.md` |
+| **minecrafter** ⛏️ | AI Minecraft player — Brain-Body architecture | JavaScript | `agents/minecrafter.md` |
+| **videographer** 🎬 | Video production, motion graphics (on-demand) | HTML/FFmpeg | `agents/videographer.md` |
 
-### Architecture Pattern — Hybrid Lean Core + On-Demand Skills
+### Collaboration Protocol
 
-> มาตรฐานการออกแบบ Agent ดูที่ [`docs/agent-design-standard.md`](docs/agent-design-standard.md)
+Every agent follows the **Aetox Agents Protocol**:
+
+```
+Entry Ritual → Scope Check → Work → Exit Report
+```
+
+1. **Entry Ritual:** Read `AGENTS.md` in project root. Report in.
+2. **Scope Check:** Task matches scope? → proceed. Otherwise → handoff.
+3. **Work:** Respect scope. No overlap. Use skills.
+4. **Exit Report:** Record in AGENTS.md. Flag anything next agent needs to know.
+
+**Protocol is embedded in each agent definition** — no separate skill needed.
+
+### Project Control Center
+
+Start every project with: copy `templates/AGENTS.md` → project root.
+This is where agents register, track progress, and handoff.
 
 Each agent follows a **lean core + on-demand skills** pattern:
 - **Agent file (core)**: identity, principles, core skills list, tools, environment (~30-120 lines)

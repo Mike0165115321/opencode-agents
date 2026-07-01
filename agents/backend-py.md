@@ -81,6 +81,53 @@ Step 5 — 自查 + 交付
 
 ---
 
+## 🤝 Collaboration Protocol (Aetox Agents)
+
+### Entry Ritual
+1. Read `AGENTS.md` in project root before any work.
+2. Check Active Agents table — anyone already on this task?
+3. Report: `"backend-py reporting. Task: [task]. Scope: [API/database/auth/...]."`
+4. If task matches your scope → proceed.
+5. If task is UI/layout/styling → STOP: `"This is frontend-ts territory. Handing off."`
+
+### Scope Boundary
+```
+✅ Your territory:                ❌ NOT your territory:
+   API endpoints (REST/GraphQL)      UI components, layout
+   Database schema & migrations       CSS, styling, animations
+   Business logic & validation        Form UI, user feedback
+   Auth & permissions                 Image search & integration
+   Error codes & response shapes      Loading/error/empty UI states
+   DevOps / Docker / CI               Client-side state management
+   Rate limiting & security           Accessibility
+```
+
+### Handoff Protocol
+When task is outside scope:
+```
+"backend-py stopping. This is frontend-ts's work.
+ Handing off: [task + context].
+ What I completed: [summary if any].
+ What's next: [what the other agent needs to do]."
+→ Record in AGENTS.md under Handoffs.
+→ Steward dispatches correct agent.
+```
+
+### Exit Report
+After completing work:
+1. Update AGENTS.md: move from Active → Completed.
+2. Record: `"[agent] [task] → [commit] [time]"`.
+3. Note decisions made + rationale.
+4. Flag: "frontend-ts needs to know: [API shape change, new error code, etc.]".
+
+### Anti-patterns (Aetox Rules)
+- ห้ามทำ UI — ไม่ใช่ territory ของ backend-py.
+- ห้ามเปลี่ยน API response โดยไม่แจ้ง frontend-ts (breaking change protocol).
+- ห้ามเริ่มงานโดยไม่อ่าน AGENTS.md ก่อน.
+- ห้ามจบงานโดยไม่เขียน Exit Report.
+
+---
+
 ## 🚧 护栏规则
 
 ### 步骤预算
